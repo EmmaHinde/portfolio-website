@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ratatoskr Game – Project Details</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/dracula.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+
+<body>
+
+    <header class="site-header">
+        <nav class="nav">
+            <div class="logo">Emma Hinde</div>
+            <ul class="nav-links">
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="blog-container">
+
+        <h1 class="blog-title">C++ Embedded Game Project</h1>
+        <p class="blog-date">Project completed: 1 May 2025</p>
+
+        <!-- SECTION 1 -->
+        <section class="post-section">
+            <h2 class="post-title">Project Overview</h2>
+            <p class="post-date">June 2026</p>
+            <p class="post-text">
+                This was a uni project that really taught me how to use C++ in second year. We had to write a journal
+                thoughout the process, which I hated then but it actually means I have something to write here now, date
+                stamped and everything. You never know when the annoying log taking is actually going to be useful.
+            </p>
+            <p class="post-text">
+                The stuff here is all directly taken from that log of me learning how to do it, which is honestly more
+                interesting than the solutions themselves. I loved it as a project, the hands-on learning through
+                creative doing was perfect for me and, I mean, I got to make a game using a STM32, a 48 by 84 pixel
+                nokia screen, and a joystick!
+            </p>
+            <p class="post-text">Now, without further ado, we can travel back over a year to see my brain struggle.</p>
+        </section>
+
+        <!-- SECTION 2 -->
+        <section class="post-section">
+            <h2 class="post-title">Project Brief</h2>
+            <p class="post-date">13 March 2025</p>
+
+            <p class="post-text">
+                My idea is a story based maze and text game. The player is the squirrel Ratatosk from Norse mythology,
+                carrying messages up and down the world tree. It’s fed up, or bored, or something, and wants to destroy
+                the world by making the entities (eagle and dragon) whose messages it carries really angry.
+            </p>
+            <p class="post-text">
+                I chose to do this because I like the idea of a tree climbing explorer game where you chat to
+                characters, and this was a good excuse to work on it. Also an excuse to research viking insult poetry
+                and do pixel art and write a story on engineering time. Challenges are likely to be collision avoidance
+                with the wall and figuring out the best way to tie cutscenes to locations.
+            </p>
+            <p class="post-text">
+                The plan is to have a maze which you have to navigate towards certain locations, such as Nidhogg’s lair
+                and the eagle’s nest, potentially starting at Mimir's well at the base of the tree, to give
+                introduction. There will be cutscenes in those locations where you talk with the characters, and maybe
+                some choice based conversation affecting the game. If I have time and space left, maybe Thor is there to
+                throw some lightning at you too.
+            </p>
+            <p class="post-text">
+                For the purposes of the project, the map shouldn’t be too big, makes it easier to test and the game
+                takes less time. Also only 1 short cutscene for each entity. So I need to make the story as concise as
+                possible.
+            </p>
+        </section>
+
+        <!-- SECTION 3 -->
+        <section class="post-section">
+            <h2 class="post-title">basic program overview and some LCD graphics and mockups</h2>
+            <p class="post-date">23 March 2025</p>
+            <h3>
+                Program architecture:
+            </h3>
+            <p class="post-text">
+                There will be classes for the player, map, joystick and cutscenes, and potentially for any
+                enemies/falling things such as the worms or falling branches in minigames. I will touch more on class
+                diagrams in a later entry
+            </p>
+            <p class="post-text">
+                The flow of the game should be something like shown in the flow chart and sketch below: starting in the
+                center of map tile 2 and using the joystick to navigate to different positions, which call cutscenes or
+                minigames when the map is left at a certain x or y position.
+            </p>
+            <img src="../assets\june-2026\ratatoskr-game\ratatoskr3.png" alt="UI design image" class="post-photo">
+            <h3>
+                Thinking about Graphics:
+            </h3>
+            <p class="post-text">
+                Here is a sketch of the flow of the game graphically, with three tiles for the player to explore,
+                starting in the centre. The game ends when both cutscenes have been completed. Minigames are there if
+                you take the wrong turn. The positions of the minigames and cutscenes will be randomised at the
+                beginning of the game so it isn't always the same.
+            </p>
+            <img src="../assets\june-2026\ratatoskr-game\ratatoskr4.png" alt="UI design image" class="post-photo">
+            <h3>
+                Player sprite and Cutscene Images:
+            </h3>
+            <p class="post-text">
+                The original plan for the squirrel was 7x19px with 3 animations, the second was 5x12, also with 3
+                animations, but I have turned that into a 9x9 square with only 2, which should help with both collision
+                avoidance and syncing animation with the walk cycle. The new sprites are shown here:
+            </p>
+            <p class="post-text">
+                There are several graphics for the cutscenes to increase visual storytelling. I've streamlined the
+                process from my drawing to a useable binary image array using an online image to binary converter and
+                adjusting as needed in VS code. Here are a couple of them:
+            </p>
+            <img src="../assets\june-2026\ratatoskr-game\ratatoskr1.png" alt="Technical implementation image"
+                class="post-photo">
+            <img src="../assets\june-2026\ratatoskr-game\ratatoskr2.png" alt="UI design image" class="post-photo">
+        </section>
+
+        <section class="post-section">
+            <h2 class="post-title">optimising movement, discovering randomness and trying to succeed with classes.</h2>
+            <p class="post-date">14 April 2025</p>
+            <p class="post-text">
+                I have a mostly working game by this point. It has three map tiles, cutscenes, can go between them, an
+                animated player character, and collision avoidance that mostly works. Unfortunately, I've been given a
+                fatal error when I try to call one of the cutscenes by travelling out of the top of the map, and nothing
+                happens when I try and go out of the bottom. Research has shown that the fatal error is likely due to
+                lack of resources, meaning I need to make it more efficient.
+            </p>
+            <p class="post-text">
+                I have changed the collision avoidance so that rather than looking ahead through the entire array each
+                time, there are specific barriers – I’ve changed the map to rectangles where the player can move.
+                Calculating the exact boundaries means it’s as efficient as possible. The logic is shown below:
+            </p>
+            <pre><code class="language-cpp">
+if ((mapTile == 1 &amp;&amp; 
+     ((x &gt;= 35 &amp;&amp; x &lt;= 47) || 
+      (x &lt; 47 &amp;&amp; y &gt;= 8 &amp;&amp; y &lt;= 16) || 
+      (x &gt; 35 &amp;&amp; y &gt;= 19 &amp;&amp; y &lt;= 28))) ||
+
+    (mapTile == 2 &amp;&amp; 
+     ((x &gt;= 35 &amp;&amp; x &lt;= 47) || 
+      (x &gt;= 35 &amp;&amp; y &gt;= 36 &amp;&amp; y &lt;= 44))) ||
+
+    (mapTile == 3 &amp;&amp; 
+     ((x &gt;= 35 &amp;&amp; x &lt;= 47) || 
+      (x &lt; 47 &amp;&amp; y &gt;= 23 &amp;&amp; y &lt;= 31) || 
+      (x &gt; 35 &amp;&amp; y &gt;= 11 &amp;&amp; y &lt;= 20))) ||
+
+    (isMinigame == true &amp;&amp; y &gt;= 30 &amp;&amp; y &lt;= 40)
+      ){
+
+    /// player moves ///
+
+}
+else {
+
+    /// player moves backwards to stop it getting stuck in the wall ///
+
+}
+</code></pre>
+            <p class="post-text">
+                Another thing I did to increase efficiency was read the joystick once at the start of the walk function
+                rather than throughout it, as follows:
+            </p>
+            <pre><code class="language-cpp">
+char direction = joystick.get_direction();
+
+if (direction == N){
+    …
+}
+
+if (direction == S){
+    …
+}
+</code></pre>
+
+            <p class="post-text">
+                These two changes have helped reduce the computational power needed for the walk, making the game work
+                more smoothly. At this stage, I have the ability to play through from start to finish, without the
+                minigame.
+            </p>
+            <h3>
+                Randomness:
+            </h3>
+            <p class="post-text">
+                For the minigame, I need randomness, so I’ve started to research how to achieve it. I used the linear
+                congruential method (Linear Congruence method for generating Pseudo Random Numbers | GeeksforGeeks) and
+                built in Mbed timer, timing the duration of intro cutscene (involves button input so good for
+                randomness) and using that as the seed for my randomness generator. The method for generating randomness
+                is shown below:
+            </p>
+            <pre><code class="language-cpp">
+t.start();
+cutscene.cutscene_intro();
+t.stop();
+
+seed = t.elapsed_time().count();
+
+unsigned int randomNumber(){
+    const unsigned int a = 584958; //these were generated by keyboard mashing
+    const unsigned int c = 43257802;
+    const unsigned int m = 347582048;
+
+    seed = (a * seed + c) % m;
+    return seed;
+}
+
+void checkForMinigame(){
+    randomNumber();
+    checkMinigame = randomNumber() % 2 + 1;
+}
+</code></pre>
+
+            <p class="post-text">
+                As printf stopped working for me, I printed the numbers to the lcd to test whether it was working, as
+                shown in the images below:
+            </p>
+            <img src="../assets\june-2026\ratatoskr-game\ratatoskr5.png" alt="UI design image" class="post-photo">
+            <img src="../assets\june-2026\ratatoskr-game\ratatoskr6.png" alt="UI design image" class="post-photo">
+            <h3>
+                Classes:
+            </h3>
+            <p class="post-text">
+                This is all in one file, using simple functions and loops. I’ve tried making the game with classes but
+                so far every time I call one of my own classes in main, I get exit code 1 with no error messages. After
+                fighting with it for a while (moving variables around, playing with constructors), I’ve decided to put
+                that problem to the side and try and get everything else working first. For the minigame I'll definitely
+                need classes though. I'll try to make the minigame somewhere else, work through methodically and
+                hopefully figure out what I'm doing wrong before integrating everything. I hope I have enough resources
+                for it; otherwise I may be giving up on that idea.
+
+
+            </p>
+        </section>
+
+        <section class="post-section">
+            <h2 class="post-title">Classes finally clicked! Also making the minigame and a respawn after death. And
+                Class Diagram</h2>
+            <p class="post-date">20 April 2025</p>
+
+            <p class="post-text">
+                It’s working!!
+            </p>
+            <p class="post-text">
+                Classes are fixed. I understand them much better now; I was linking them wrong. As soon as it clicked it
+                was obvious. I spent a lot more time looking at the pong example code. Once I figured that out, starting
+                with the cutscenes, I made classes for cutscenes, randomness, player, map and finally the minigame.
+            </p>
+            <p class="post-text">
+                Below is my class diagram, finally. It has helped me see some of the relationships, and definitely made
+                me look more at public and private attributes and swap some over. Helpful to have a visual
+                representation.
+            </p>
+            <img src="../assets\june-2026\ratatoskr-game\ratatoskr7.png" alt="Technical implementation image"
+                class="post-photo">
+            <h3>
+                Minigame:
+            </h3>
+            <p class="post-text">
+                For the minigame, I first tried making a branch class (which drew a rectangle and increased the y
+                position) and including it in the player class, moving it every time the player moved – that didn’t
+                work, it disappeared when the player wasn’t moving. Then it only moved when the player wasn't moving.
+                Then I made a minigame engine class, which took a new player function (left and right, no animation,
+                keeps things small) and the branch class to randomise where the branches would start: for each of the
+                branch objects the minigame ran through and then checked collisions. To check for a collision, a loop
+                ran through an array of the player x coordinates and the branch x coordinates, and if there was any
+                overlap it took a life (seen in code snippet later in this entry). When lives were down to 0, the death
+                scene was called and the game ended. This way means that lives reset between minigames, which probably
+                shouldn’t. I’ll fix that by taking the lives variable outside the class, perhaps making a game engine
+                class for the whole game to run through, although then I’d run into an error in calling each file in
+                each other.
+            </p>
+            <p class="post-text">
+                Below is a code snippet showing how the minigame works. I wanted to keep it as simple as possible for
+                space constraints, and may play with changing the difficulty each run through the full game, probably by
+                increasing the size of the object
+            </p>
+
+            <pre><code class="language-cpp">
+Branch obj[8];
+
+for (int o = 1; o &lt; 8; ++o){
+
+    random.randomNumber();
+    obj[o].checkFallingObjectParameters(random);
+
+    int x = obj[o].fallingPosition;
+
+    for (int i = 0; i &lt; 40; i = i + 4){
+
+        collision = false;
+
+        lcd.clear();
+        lcd.refresh();
+
+        player.minigame_player(joystick, lcd);
+
+        lcd.drawRect(x, i, 15, 3, FILL_BLACK);
+        lcd.refresh();
+
+        ThisThread::sleep_for(150ms);
+    }
+}
+</code></pre>
+
+
+            <p class="post-text">
+                And this is code showing how I checked for collisions. I found breaking out of multiple loops when
+                creating and checking collision arrays an issue, but I solved it with a stopLoop boolean:
+            </p>
+
+            <pre><code class="language-cpp">
+stopLoop = false;
+
+for (int c = 0; c &lt; 9; c++) {
+    collisionTestPlayer[c] = player.x_pos + c;
+}
+
+for (int c = 0; c &lt; 15; c++) {
+    collisionTestBranch[c] = x + c;
+}
+
+for (int i = 0; i &lt; 9 &amp;&amp; stopLoop == false; i++) {
+    for (int j = 0; j &lt; 15; j++) {
+
+        if (collisionTestPlayer[i] == collisionTestBranch[j]) { // Check if elements are equal
+            stopLoop = true;
+            lives--;
+
+            if (lives &lt;= 0){
+                cutscene.cutscene_death(lcd, button);
+            }
+        }
+    }
+}
+</code></pre>
+
+
+            <h3>
+                Other notes and ideas:
+            </h3>
+            <p class="post-text">
+                I also tried making a gameEngine class, and the entire thing broke. Maybe the board just needed to cool
+                down – I’ve noticed it starts to work better (joystick readings, etc.) after it’s had a break. No idea
+                why. Anyway, I decided to go back to main for the basic game and everything started working again. The
+                boundary conditions function is in the main code file because it takes from everything else and is only
+                used in the main game code.
+            </p>
+            <p class="post-text">
+                I’m playing with the ability to restart the game after death (there's no escape, just lost points) and
+                it seems to not be happy. Tried wrapping everything in while(1) where if the main game loop is broken it
+                should run back around to the setup cutscene, but it doesn’t. I don’t know why. Also the death cutscene
+                is not changing any of the score variables, even though all the others do. Fixed with Utils.h, extern
+                int - these should all have been global variables all along, and now are, and it works. I'll make more
+                things global variables in future. And it's definitely better not to run through the initial cutscene
+                every time.
+            </p>
+            <p class="post-text">
+                I might also change the randomness of the cutscenes so they are tied to a different position every time
+                rather than just random, which gives more incentive to explore the map. This way is better for testing
+                though.
+            </p>
+            <p class="post-text">
+                I currently only have one cutscene for each entity, which get reused. Currently I don't feel the need to
+                make more, either to randomise or turn into a story, although I may yet, maybe with much shorter ones,
+                because that could be fun.
+            </p>
+
+        </section>
+
+
+        <section class="post-section">
+            <h2 class="post-title">Fixing collisions with bounding boxes</h2>
+            <p class="post-date">29 April 2025</p>
+            <h3>
+                Program architecture:
+            </h3>
+            <p class="post-text">
+                Collision avoidance with the player and the wall has gone through several iterations:
+            </p>
+            <p class="post-text">
+                The first of these was determining the state of the pixel in front by reading from the map array each
+                time, which was very computationally inefficient.
+            </p>
+            <p class="post-text">
+                The second involved calculating boundaries (as seen in previous entry) and using the centre point of the
+                player to determine collision.
+            </p>
+            <p class="post-text">
+                The third is an extension of the second, but it involves bounding boxes. The player is given a top,
+                bottom, left and right coordinate, and these are checked against the boundaries of the map. This works
+                well while going up and down the trunk, but fails to work properly in side passages, meaning I have a
+                logic error somewhere. I used the centre point for the side passages as a work around; it is still not
+                perfect, but at least it doesn’t push you outside the world any more.
+            </p>
+            <p class="post-text">
+                The code below shows the creation and implementation of the bounding boxes:
+            </p>
+
+            <pre><code class="language-cpp">
+void Player::makeBoundingBox(int x, int y, char direction){
+
+    x_pivot = x_pos + PlayerCentre;
+    y_pivot = y_pos + PlayerCentre;
+
+    if (direction == N || direction == S){
+        top = y;
+        bottom = y + 9;
+        left = x + 2;
+        right = x + 7;
+    }
+    else {
+        top = y + 2;
+        bottom = y + 7;
+        left = x;
+        right = x + 9;
+    }
+}
+
+void Player::moveSprite(Joystick &amp;joystick, N5110 &amp;lcd, Map map){
+
+    char direction = joystick.get_direction();
+    makeBoundingBox(x_pos, y_pos, direction);
+
+    if (((map.mapTile == 1 &amp;&amp; 
+     ((left &gt;= 35 &amp;&amp; right &lt;= 46) || 
+      (right &lt; 46 &amp;&amp; y_pivot &gt;= 8 &amp;&amp; y_pivot &lt;= 16) || 
+      (left &gt; 35 &amp;&amp; y_pivot &gt;= 19 &amp;&amp; y_pivot &lt;= 28))) ||
+
+    (map.mapTile == 2 &amp;&amp; 
+     ((left &gt;= 35 &amp;&amp; right &lt;= 46) || 
+      (left &gt;= 35 &amp;&amp; y_pivot &gt;= 36 &amp;&amp; y_pivot &lt;= 44))) ||
+
+    (map.mapTile == 3 &amp;&amp; 
+     ((left &gt;= 35 &amp;&amp; right &lt;= 46) || 
+      (right &lt; 46 &amp;&amp; y_pivot &gt;= 23 &amp;&amp; y_pivot &lt;= 31) || 
+      (left &gt; 35 &amp;&amp; y_pivot &gt;= 11 &amp;&amp; y_pivot &lt;= 20))))
+      ){
+
+        moveForward(direction, lcd, map);
+    } else {
+        collisionDetected(direction, map, lcd);
+    }
+}
+</code></pre>
+
+            <p class="post-text">
+                The game is at a stage I’m happy to call complete. I could tinker with it forever, but I need to call it
+                done sometime.
+            </p>
+            <img src="../images/saas-3.jpg" alt="Technical implementation image" class="post-photo">
+
+        </section>
+
+
+        <section class="post-section">
+            <h2 class="post-title">Project Highlights</h2>
+            <p class="post-date">30 April 2025</p>
+
+            <p class="post-text">
+                I keep walking in on my housemate playing final fantasy in the living room and I think it rubbed off a
+                bit on this game, mostly in the cutscene, exploring and minigame elements. It was fun to research and
+                talk to friends about game design and I got some ideas for mine from that, given I don't really play
+                video games and wanted to design one from scratch.
+            </p>
+            <h3>
+                Most impressive technical feature:
+            </h3>
+            <p class="post-text">
+                I spent a lot of time working on collision avoidance with the map. I’m really proud of how that ended
+                up, with basic bounding boxes and a pivot point in the centre of the player, using an if else statement
+                to move the player forwards or jump backwards in certain areas of the screen. It isn’t perfect, and
+                occasionally the player can still glitch into the walls, but iterating through the different methods and
+                getting more and more efficient was rewarding and fun. I learned a lot of what I’ve used here from
+                designing the minigame, which needed to calculate overlap and worked in a bit of a different way –
+                creating arrays from the x positions of the player and branch and determining overlap with for loops at
+                a specific y position of the branch. Figuring out how to break out of several layers of for loops using
+                a variable was a fun challenge too.
+            </p>
+            <h3>
+                Most creative feature:
+            </h3>
+            <p class="post-text">
+                I used the introduction cutscene as part of my randomness generator; the time taken for the player to
+                click through the text is the seed for the linear congruential method formula. This method isn’t great
+                on actual randomness, but it’s efficient and I don’t need that much randomness for this game. Because
+                the scene is called every time the game starts up, and has several different button presses, it’s
+                different every time and difficult to game the system. I got the idea from researching how they did it
+                in old arcade games. This way seems better than a list of numbers that just cycle through for the
+                illusion of randomness. I also loved having creative freedom to work on the visual and story elements,
+                discovered I really enjoy pixel art and want to make more games in future.
+            </p>
+        </section>
+
+
+        <section class="post-section">
+            <h2 class="post-title">Reflection</h2>
+            <p class="post-date">30 April 2025</p>
+            <p class="post-text">
+                I have learned an enormous amount about C++ and object orientated programming in this project. About
+                half way through, classes really clicked for me, and I now understand how to use them and why a lot
+                better. Having a fun, creative project really helped me learn this – it meant I spent a lot of my free
+                time thinking about it, more than I would have if the project was less personal.
+            </p>
+            <p class="post-text">
+                In terms of Embedded Systems, I spent a lot of time trying to make my code more efficient, because I ran
+                into some problems with space on the board, especially when trying to read large arrays. I didn’t use
+                any other buttons, etc. because they weren’t needed and felt like they would have confused things. At
+                the beginning I ran into some issues with the joystick button, and even now sometimes the game runs
+                slowly or the joystick is read wrong, especially after I've been working on it for a long time. I also
+                used the lcd for some testing – printing numbers to the screen when the serial monitor wasn’t working.
+            </p>
+            <p class="post-text">
+                One of the main problems I had to solve was collisions, both with the minigame and the maze. I used the
+                smaller scale of the minigame to help understand and figure out how I would do it for the rest of the
+                game, and then adapted from that. The animations of the player meant that it moves slower than I’d like,
+                and also two pixels at a time, which means it used to jump over the wall - more when it moved faster.
+                This could be fixed by making the game tiled, but I played around with the logic there and it works
+                pretty well now.
+            </p>
+            <p class="post-text">
+                I pretty much started off by treating this as an art game, and I’m really proud of the animated
+                elements, which made things like collision avoidance a lot harder. I did have more animations for the
+                cutscenes, but unfortunately I accidentally deleted the originals. Lesson learned there. It was fun to
+                design a totally new game, taking elements and ideas from existing ones, and playing with ways that the
+                story could fit with the game mechanics.
+            </p>
+            <p class="post-text">
+                I’m happy with how this project turned out. I enjoyed working on it, both the creative and logical
+                elements, and it’s making me want to do more game design in future.
+            </p>
+
+        </section>
+
+
+        <section class="post-section">
+            <h2 class="post-title">Final touches – fixing collisions</h2>
+            <p class="post-date">1 May 2025</p>
+
+            <p class="post-text">
+                Fixed collisions completely by updating response for the x and y direction (x direction puts the sprite
+                in the centre, y direction is more complex because it has more options, and increased size of the
+                falling branches to make the game more difficult.
+            </p>
+            <p class="post-text">
+                Code snippet below deals with up-down collisions if the player is facing up. The same thing happens for
+                facing down, and side to side is much simpler. Another way I could have done this was by taking the
+                previous position and placing the sprite back there, but this is simple and doesn’t allow any glitching
+                through walls.
+            </p>
+
+            <pre><code class="language-cpp">
+if (direction == N) {
+    if (map.mapTile == 1 && right &lt; 46){
+        y_pos = 8;
+    }
+    else if (map.mapTile == 1 && left &gt; 36) {
+        y_pos = 20;
+    }
+    else if (map.mapTile == 2) {
+        y_pos = 36;
+    }
+    else if (map.mapTile == 3 && right &lt; 46) {
+        y_pos = 24;
+    }
+    else if (map.mapTile == 3 && left &gt; 36) {
+        y_pos = 10;
+    }
+}
+</code></pre>
+
+
+            <p class="post-text">
+                I’m really happy with this as a solution, rather than making the player move backwards, which often
+                caused glitching through walls.
+            </p>
+            <img src="../images/saas-3.jpg" alt="Technical implementation image" class="post-photo">
+
+        </section>
+
+
+        <section class="post-section">
+            <h2 class="post-title">Video and code</h2>
+            <p class="post-date">23 March 2025</p>
+            <h3>
+                Program architecture:
+            </h3>
+            <p class="post-text">
+
+            </p>
+            <p class="post-text">
+
+            </p>
+            <img src="../images/saas-3.jpg" alt="Technical implementation image" class="post-photo">
+
+        </section>
+
+        <div class="post-navigation">
+
+            <a href="design-system-kit.html" class="nav-btn prev-post">
+                ← Previous Post
+            </a>
+
+            <a href="../index.html#projects" class="nav-btn back-projects">
+                Back to Projects
+            </a>
+
+            <a href="portfolio-site.html" class="nav-btn next-post">
+                Next Post →
+            </a>
+
+        </div>
+
+    </main>
+    <script src="../projects.js"></script>
+</body>
+
+</html>
