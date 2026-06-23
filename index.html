@@ -11,73 +11,17 @@
 </head>
 
 <body>
-
     <!-- Header -->
     <header class="site-header">
         <nav class="nav">
             <div class="logo">Emma Hinde</div>
 
             <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#hobbies">Fun stuff</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="index.html">Projects</a></li>
             </ul>
         </nav>
     </header>
-
-    <!-- About Section -->
-    <section id="about" class="about-section">
-        <div class="section-header">
-            <h2 class="section-title">About Me</h2>
-            <!-- NEW: Profile Photo -->
-            <p class="section-subtitle">
-                A quick overview of who I am and what I do.
-            </p>
-
-        </div>
-
-        <div class="about-grid">
-
-            <div class="about-photo">
-                <img src="assets\profilepic.jpg" alt="My photo" />
-            </div>
-
-            <div class="about-text">
-                <p>
-                    Hi, I'm Emma! I'm a Mechatronics and Robotics Engineer with a passion for making cool stuff
-                    and working
-                    across engineering disciplines to bring projects together. This is a place to stick some of the
-                    projects I've worked on, and have a bit of a blog sorta thing going on in case anyone else turns up
-                    and runs into the same problems.
-                </p>
-                <p>
-                    I'm really excited about the potential for robotics in dangerous or hard to reach locations for
-                    environmental and sustainibility purposes. Also bio-inspired robots are so cool! This has got a
-                    bunch of random projects from uni ones to internship ones to random personal things I did years ago
-                    and am writing up from what I can remember.
-                </p>
-                <p>
-                    When I'm not doing robotics projects, I run art events for other students and am working towards
-                    getting the Uni of Leeds Astronomy society access to the old physics domes.
-                </p>
-            </div>
-
-            <div class="about-highlights">
-                <div class="highlight-card">
-                    <div class="highlight-label">Education</div>
-                    <div class="highlight-value">Mechatronics and Robotics at the University of Leeds</div>
-                </div>
-
-                <div class="highlight-card">
-                    <div class="highlight-label">Latest project</div>
-                    <div class="highlight-value">Autonomous circular manufacturing robot</div>
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-
 
     <!-- Projects Section -->
     <section id="projects" class="projects-section">
@@ -91,223 +35,149 @@
         <div class="projects-grid">
 
             <article class="project-card">
-                <div class="project-thumb-no-img"></div>
-                <div class="project-body">
-                    <h3 class="project-title">Real Robotics lab internship</h3>
-                    <p class="project-date">2026</p>
-                    <p class="project-desc">
-                        Autonomous navigation for a small circular manufacturing robot
-                    </p>
-                    <div class="project-tags">
-                        <span>Jetson super nano</span>
-                        <span>ROS 2</span>
-                        <span>SPAN</span>
+                <a href="blog/autonomous-navigation.html" class="no-style">
+                    <div class="project-thumb-no-img"></div>
+                    <div class="project-body">
+                        <h3 class="project-title">Autonomous navigation for a small circular manufacturing robot</h3>
+                        <p class="project-date">2026</p>
+                        <p class="project-desc">
+                            Summer internship with the real robotics lab in Leeds Uni
+                        </p>
+                        <div class="project-tags">
+                            <span>Jetson orin nano</span>
+                            <span>ROS 2</span>
+                            <span>SLAM</span>
+                        </div>
                     </div>
-                    <a href="blog/autonomous-navigation.html" class="project-btn">Read More →</a>
-                </div>
-            </article>
-
-            <article class="project-card">
-                <div class="project-thumb"> <img src="../assets\june-2026\misc\softGripper2.jpeg" alt="My photo" />
-                </div>
-                <div class="project-body">
-                    <h3 class="project-title">Soft gripper</h3>
-                    <p class="project-date">2026</p>
-                    <p class="project-desc">
-                        My 3rd year uni project was to design and fabricate a passive closing and active opening system
-                        for a pneumatic soft gripper.
-                    </p>
-                    <div class="project-tags">
-                        <span>Robotics</span>
-                        <span>End Effectors</span>
-                        <span>Uni projects</span>
-                    </div>
-                    <a href="blog/soft-gripper.html" class="project-btn">Read More →</a>
-                </div>
+                </a>
             </article>
 
 
-            <article class="project-card">
-                <div class="project-thumb-no-img"></div>
-                <div class="project-body">
-                    <h3 class="project-title">Project ORION Rover Team</h3>
-                    <p class="project-date">2026</p>
-                    <p class="project-desc">
-                        I am working on the end effector for the robot arm for the Leeds University space robotics
-                        team
-                    </p>
-                    <div class="project-tags">
-                        <span>Robotics</span>
-                        <span>End Effectors</span>
-                        <span>Electronics</span>
-                    </div>
-                    <a href="blog/softGripper.html" class="project-btn">Read More →</a>
-                </div>
-            </article>
-
 
             <article class="project-card">
-                <div class="project-thumb-no-img"></div>
-                <div class="project-body">
-                    <h3 class="project-title">Astro domes</h3>
-                    <p class="project-date">2026</p>
-                    <p class="project-desc">
-                        Gaining access to and setting up the first student run observatory at the Uni of Leeds!
-                    </p>
-                    <div class="project-tags">
-                        <span>Jetson super nano</span>
-                        <span>ROS 2</span>
-                        <span>SPAN</span>
+                <a href="blog/astrodome-project.html" class="no-style">
+                    <div class="project-thumb-no-img"></div>
+                    <div class="project-body">
+                        <h3 class="project-title">Astronomy Domes</h3>
+                        <p class="project-date">2026</p>
+                        <p class="project-desc">
+                            Gaining access to and setting up the first student run observatory at the Uni of Leeds!
+                        </p>
+                        <div class="project-tags">
+                            <span>Astronomy</span>
+                        </div>
                     </div>
-                    <a href="blog/autonomous-navigation.html" class="project-btn">Read More →</a>
-                </div>
+                </a>
             </article>
 
             <article class="project-card">
-                <div class="project-thumb"> <img src="assets\june-2026\ratatoskr-game\ratatoskr6.jpg" alt="My photo" />
-                </div>
-                <div class="project-body">
-                    <h3 class="project-title">C++ embedded game project</h3>
-                    <p class="project-date">2025</p>
-                    <p class="project-desc">
-                        Using C++ and a nokia screen, joystick and STM32, I made a game based off norse mythology
-                    </p>
-                    <div class="project-tags">
-                        <span>C++</span>
-                        <span>STM32</span>
-                        <span>Uni projects</span>
+                <a href="blog/soft-gripper.html" class="no-style">
+                    <div class="project-thumb"> <img src="assets\june-2026\misc\softGripper1.jpg" alt="My photo" />
                     </div>
-                    <a href="blog/ratatoskr-game.html" class="project-btn">Read More →</a>
-                </div>
+                    <div class="project-body">
+                        <h3 class="project-title">Form Responsive Elastomeric Digit (FRED)</h3>
+                        <p class="project-date">2026</p>
+                        <p class="project-desc">
+                            My 3rd year uni project was to design and fabricate a passive closing and active opening
+                            system for a pneumatic soft gripper.
+                        </p>
+                        <div class="project-tags">
+                            <span>Robotics</span>
+                            <span>End Effectors</span>
+                            <span>Uni projects</span>
+                        </div>
+                    </div>
+                </a>
             </article>
 
             <article class="project-card">
-                <div class="project-thumb-no-img"></div>
-                <div class="project-body">
-                    <h3 class="project-title">Catapult project</h3>
-                    <p class="project-date">2024</p>
-                    <p class="project-desc">
-                        It wasn't pretty but taught me the value of easy calibration. We won!
-                    </p>
-                    <div class="project-tags">
-                        <span>Uni projects</span>
-                        <span>Wooden stuff!</span>
+                <a href="blog/ratatoskr-game.html" class="no-style">
+                    <div class="project-thumb"> <img src="assets\june-2026\ratatoskr-game\ratatoskr6.jpg"
+                            alt="My photo" />
                     </div>
-                    <a href="blog/catapult-project.html" class="project-btn">Read More →</a>
-                </div>
+                    <div class="project-body">
+                        <h3 class="project-title">C++ embedded game project</h3>
+                        <p class="project-date">2025</p>
+                        <p class="project-desc">
+                            Using C++ and a nokia screen, joystick and STM32, I made a game based off norse mythology.
+                        </p>
+                        <div class="project-tags">
+                            <span>C++</span>
+                            <span>STM32</span>
+                            <span>Uni projects</span>
+                        </div>
+                    </div>
+                </a>
             </article>
 
             <article class="project-card">
-                <div class="project-thumb-no-img"></div>
-                <div class="project-body">
-                    <h3 class="project-title">Personal robotic cat project</h3>
-                    <p class="project-date">2022</p>
-                    <p class="project-desc">
-                        Baby's first foray into inverse kinematics. To the point of animation in Desmos graphing
-                        calculator
-                    </p>
-                    <div class="project-tags">
-                        <span>Robotics</span>
-                        <span>Inverse Kinematics</span>
-                        <span>Wooden stuff!</span>
+                <a href="blog/catapult-project.html" class="no-style">
+                    <div class="project-thumb"> <img src="assets\june-2026\misc\treuchet.jpg" alt="My photo" />
                     </div>
-                    <a href="blog/autonomous-navigation.html" class="project-btn">Read More →</a>
-                </div>
+                    <div class="project-body">
+                        <h3 class="project-title">Ball Throwing Device (Catapult!)</h3>
+                        <p class="project-date">2024</p>
+                        <p class="project-desc">
+                            It wasn't pretty but taught me the value of easy calibration. We won!
+                        </p>
+                        <div class="project-tags">
+                            <span>Uni projects</span>
+                            <span>Wooden stuff!</span>
+                        </div>
+                    </div>
+                </a>
+            </article>
+
+            <article class="project-card">
+                <a href="blog\robot-cat.html" class="no-style">
+                    <div class="project-thumb-no-img"></div>
+                    <div class="project-body">
+                        <h3 class="project-title">Personal robotic cat project</h3>
+                        <p class="project-date">2021</p>
+                        <p class="project-desc">
+                            My first foray into inverse kinematics.
+                        </p>
+                        <div class="project-tags">
+                            <span>Robotics</span>
+                            <span>Inverse Kinematics</span>
+                            <span>Wooden stuff!</span>
+                        </div>
+                    </div>
+                </a>
             </article>
 
         </div>
     </section>
-
-
-    <!-- Fun Stuff Section -->
-    <section id="hobbies" class="projects-section">
-        <div class="section-header">
-            <h2 class="section-title">Fun stuff</h2>
-            <p class="section-subtitle">
-                Other fun things!
-            </p>
-        </div>
-
-        <div class="projects-grid">
-
-            <article class="project-card">
-                <div class="project-thumb-no-img"></div>
-                <div class="project-body">
-                    <h3 class="project-title">Logo design</h3>
-                    <p class="project-date">2026</p>
-                    <p class="project-desc">
-                        I've ended up designing logos for uni societies and teams.
-                    </p>
-                    <div class="project-tags">
-                        <span>Jetson super nano</span>
-                        <span>ROS 2</span>
-                        <span>SPAN</span>
-                    </div>
-                    <a href="blog/autonomous-navigation.html" class="project-btn">Read More →</a>
-                </div>
-            </article>
-            <article class="project-card">
-                <div class="project-thumb-no-img"></div>
-                <div class="project-body">
-                    <h3 class="project-title">Real Robotics lab internship</h3>
-                    <p class="project-date">2026</p>
-                    <p class="project-desc">
-                        A reusable component library and design system for a startup.
-                    </p>
-                    <div class="project-tags">
-                        <span>Jetson super nano</span>
-                        <span>ROS 2</span>
-                        <span>SPAN</span>
-                    </div>
-                    <a href="blog/autonomous-navigation.html" class="project-btn">Read More →</a>
-                </div>
-            </article>
-            <article class="project-card">
-                <div class="project-thumb-no-img"></div>
-                <div class="project-body">
-                    <h3 class="project-title">Real Robotics lab internship</h3>
-                    <p class="project-date">2026</p>
-                    <p class="project-desc">
-                        A reusable component library and design system for a startup.
-                    </p>
-                    <div class="project-tags">
-                        <span>Jetson super nano</span>
-                        <span>ROS 2</span>
-                        <span>SPAN</span>
-                    </div>
-                    <a href="blog/autonomous-navigation.html" class="project-btn">Read More →</a>
-                </div>
-            </article>
-    </section>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="footer-social">
-            <a href="https://github.com/yourusername" class="social-link" aria-label="GitHub">
-                <svg viewBox="0 0 24 24" class="social-icon">
-                    <path
-                        d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.2-1.2-1.5-1.2-1.5-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1.8 2.1 2.9 2.1 1.4 0 2.3-.7 2.7-1.4-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.3 11.3 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.9 1.2 2 1.2 3.3 0 4.5-2.7 5.5-5.3 5.8.5.4.9 1.2.9 2.4v3.5c0 .3.2.7.8.6A10.9 10.9 0 0 0 23.5 12C23.5 5.7 18.3.5 12 .5z" />
-                </svg>
-            </a>
-
-            <a href="https://linkedin.com/in/yourusername" class="social-link" aria-label="LinkedIn">
-                <svg viewBox="0 0 24 24" class="social-icon">
-                    <path
-                        d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 8.98h4v12H3v-12zm7 0h3.8v1.7h.1c.5-.9 1.8-1.9 3.7-1.9 4 0 4.7 2.6 4.7 6v6.2h-4v-5.5c0-1.3 0-3-1.9-3s-2.2 1.4-2.2 2.9v5.6h-4v-12z" />
-                </svg>
-            </a>
-
-            <a href="mailto:you@example.com" class="social-link" aria-label="Email">
-                <svg viewBox="0 0 24 24" class="social-icon">
-                    <path d="M2 4h20v16H2V4zm10 7L4 6v12h16V6l-8 5z" />
-                </svg>
-            </a>
-        </div>
-
-        <p>© 2026 My Portfolio. All rights reserved.</p>
-    </footer>
-
-    <script src="projects.js"></script>
 </body>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="footer-social">
+        <a href="https://github.com/yourusername" class="social-link" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" class="social-icon">
+                <path
+                    d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.2-1.2-1.5-1.2-1.5-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1.8 2.1 2.9 2.1 1.4 0 2.3-.7 2.7-1.4-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.3 11.3 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.9 1.2 2 1.2 3.3 0 4.5-2.7 5.5-5.3 5.8.5.4.9 1.2.9 2.4v3.5c0 .3.2.7.8.6A10.9 10.9 0 0 0 23.5 12C23.5 5.7 18.3.5 12 .5z" />
+            </svg>
+        </a>
+
+        <a href="https://linkedin.com/in/yourusername" class="social-link" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" class="social-icon">
+                <path
+                    d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 8.98h4v12H3v-12zm7 0h3.8v1.7h.1c.5-.9 1.8-1.9 3.7-1.9 4 0 4.7 2.6 4.7 6v6.2h-4v-5.5c0-1.3 0-3-1.9-3s-2.2 1.4-2.2 2.9v5.6h-4v-12z" />
+            </svg>
+        </a>
+
+        <a href="mailto:you@example.com" class="social-link" aria-label="Email">
+            <svg viewBox="0 0 24 24" class="social-icon">
+                <path d="M2 4h20v16H2V4zm10 7L4 6v12h16V6l-8 5z" />
+            </svg>
+        </a>
+    </div>
+
+    <p>© 2026 Emma Hinde</p>
+</footer>
+
+<script src="projects.js"></script>
+
 
 </html>

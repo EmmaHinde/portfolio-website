@@ -91,3 +91,4 @@ const projectsSection = document.querySelector(".projects-section");
 projectsSection.insertBefore(filterBar, projectsSection.children[1]);
 
 
+

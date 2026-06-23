@@ -15,6 +15,24 @@
 }
 
 
+a.no-style {
+    color: inherit;
+    /* Keep original text color */
+    text-decoration: none;
+    /* Remove underline */
+}
+
+a.no-style:visited {
+    color: inherit;
+    /* Keep visited color same */
+}
+
+a.no-style:hover {
+    color: inherit;
+    /* Prevent hover color change */
+}
+
+
 @media (prefers-color-scheme: light) {
     :root {
         --bg: #eef3f8;
@@ -577,3 +595,7 @@ code[class*="language-"] {
         text-align: center;
     }
 }
+
+
+
+
